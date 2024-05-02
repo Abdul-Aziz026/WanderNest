@@ -1,0 +1,63 @@
+
+/* navber style */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222 !important;
+}
+
+/* card style */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0px !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+
+
+/* Card effect */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: .2;
+    background-color: white;
+}
+
+
+/* new page */
+.add-btn{
+    background-color: #d02424 !important;
+    border: none;
+}
+
+/* Edit page */
+.edit-btn{
+    background-color:  #d02424 !important;
+    width: 80px;
+    border: none;
+}
+
+.imageSizeSet{
+    height: 50vh !important;
+    width: 95% !important;
+}
+

@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate.ejs") %>
+    <div class="container col-9 offset-2">
+        <h3 class="mb-4"><b>Listing Details</b></h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h5><b>
+                        <%= listing.title %>
+                    </b></h5>
+            </li>
+            <li class="list-group-item ImageframeSetup"><img class="imageSizeSet" src="<%= listing.image %>"
+                    alt="Listing Image" class="img-fluid"></li>
+            <li class="list-group-item">
+                <%= listing.description %>
+            </li>
+            <li class="list-group-item">Price: <%= listing.price.toLocaleString("en-GB") %> &#2547;</li>
+            <li class="list-group-item">Location: <%= listing.location %>, <%= listing.country %>
+            </li>
+        </ul>
+        <a class="btn btn-dark mt-4" href="/listings/<%= listing._id %>/edit">Edit this listing</a>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="mt-2">
+            <button type="submit" class="btn btn-danger">Delete Listing</button>
+        </form>
+    </div>
+
+
+    <div class="col-9 offset-2 mt-3 mb-3">
+        <!-- < if (currUser) { %> -->
+        <hr>
+        <h4>Leave a Review</h4>
+        <form action="/listings/<%=listing.id%>/reviews" method="POST">
+            <div>
+                <label for="rating" class="form-label">Rating</label>
+                <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range" required>
+            </div>
+
+            <div>
+                <label for="comment" class="form-label">Comments</label>
+                <textarea name="review[comment]" id="comment" cols="30" rows="3" class="form-control"
+                    required></textarea>
+            </div>
+            <button class="btn btn-dark mt-1">Submit</button>
+        </form>
+        <!-- < } %> -->
+
+        <hr>
+        <p><b>All Reviews</b></p>
+        <div class="row">
+            <% for (review of listing.reviews) {%>
+                <div class="card col-5 mb-3 ms-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=review.author.username%>
+                        </h5>
+                        <p class="card-text">
+                            <%= review.comment %>
+                        </p>
+                        <p class="card-text">
+                            <%= review.rating %> star.
+                        </p>
+                    </div>
+                    <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+                        class="mb-3">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                </div>
+                <%}%>
+        </div>
+    </div>
